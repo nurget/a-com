@@ -1,4 +1,4 @@
-import styles from "./page.module.css";
+import styles from "../page.module.css";
 // tailwind -> 호불호 심하고, 가독성 X
 // Styled Component -> Server Component SSR 문제
 // sass
@@ -6,7 +6,7 @@ import styles from "./page.module.css";
 // vanilla extract -> Windows와 문제가 있음
 import Image from "next/image";
 import Link from "next/link";
-import aLogo from '../../public/zlogo.png';
+import aLogo from '../../../public/zlogo.png';
 export default function Home() {
     return (
         <>
