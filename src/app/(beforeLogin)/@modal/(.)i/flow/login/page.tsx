@@ -1,7 +1,7 @@
 "use client"; // 서버 컴포넌트를 클라이언트 컴포넌트로 바꾸는 법, Next가 처리
 
 import { useState } from "react";
-import styles from '@/app/(beforeLogin)/@modal/login.module.css';
+import styles from '@/app/(beforeLogin)/@modal/(.)i/flow/login/login.module.css';
 
 export default function Page() {
     const [id, setId] = useState();
