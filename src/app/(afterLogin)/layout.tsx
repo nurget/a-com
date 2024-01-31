@@ -22,8 +22,8 @@ export default function AfterLoginLayout({children}: { children?: ReactNode }) {
                         <nav>
                             <ul>
                                 <NavMenu/>
-                                <Link href="/compose/tweet" className={style.postButton}>게시하기</Link>
                             </ul>
+                            <Link href="/compose/tweet" className={style.postButton}>게시하기</Link>
                         </nav>
                         <LogoutButton/>
                     </div>
@@ -56,7 +56,6 @@ export default function AfterLoginLayout({children}: { children?: ReactNode }) {
                     </section>
                 </div>
             </div>
-            {children}
         </div>
     )
 }

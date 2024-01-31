@@ -19,7 +19,6 @@
 .leftSectionFixed {
     position: fixed;
     width: inherit;
-    background-color: orange;
     /* 부모를 그대로 따라가고 싶은데 내가 fixed라 100%가 안되는 경우 inherit 사용하면 유용함! */
     height: 100dvh;
     display: flex;
@@ -80,7 +79,6 @@
 }
 
 .rightSectionInner {
-    background-color: aqua;
     height: 100%;
     width: 990px;
     display: flex;
@@ -88,13 +86,11 @@
 }
 
 .main {
-    background-color: cornflowerblue;
     width: 600px;
     height: 120dvh;
 }
 
 .rightSection {
-    background-color: blue;
     width: 350px;
     height: 100%;
 }
