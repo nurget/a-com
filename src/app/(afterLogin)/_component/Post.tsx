@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 // fromNow를 쓸 수 있게 해주는 plugin
 import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/ko';
+import ActionButtons from "@/app/(afterLogin)/_component/ActionButtons";
 
 dayjs.extend(relativeTime);
 dayjs.locale('ko');
@@ -49,7 +50,7 @@ export default function Post() {
                         {/*    </div>*/}
                         {/*)}*/}
                     </div>
-                    {/*<ActionButtons post={post}/>*/}
+                    <ActionButtons />
                 </div>
             </div>
         </article>
