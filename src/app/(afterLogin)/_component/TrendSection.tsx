@@ -1,6 +1,13 @@
+"use client";
+
 import style from './trendSection.module.css'
 import Trend from "@/app/(afterLogin)/_component/Trend";
+import {usePathname} from "next/navigation";
 export default function TrendSection() {
+    // 슬래시부터 ? 앞까지 부분 pathname
+    // http://localhost:3000/explore -> /explore가 pathname
+    const pathname = usePathname();
+    if (pathname === '/explore') return null;
     return (
         <div className={style.trendBg}>
             <div className={style.trend}>
