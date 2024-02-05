@@ -1,7 +1,8 @@
 import style from "@/app/(afterLogin)/_component/rightSearchZone.module.css";
 import React from "react";
 
-export default function SearchForm() {
+type Props = { q?: string}
+export default function SearchForm({ q }: Props) {
     return (
 
         <form className={style.search}>
