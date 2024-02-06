@@ -1,9 +1,11 @@
-import style from '/search.module.css';
+import style from './search.module.css';
 import SearchForm from "@/app/(afterLogin)/_component/SearchForm";
 import BackButton from "@/app/(afterLogin)/_component/BackButton";
+import Tab from "@/app/(afterLogin)/search/_component/Tab";
+import Post from "@/app/(afterLogin)/_component/Post";
 
 type Props = {
-    searchParams: { q: string };
+    searchParams: { q: string, f?: string, pf?: string };
 }
 export default function Search({ searchParams } : Props) {
     return (
@@ -17,9 +19,20 @@ export default function Search({ searchParams } : Props) {
                         <SearchForm q={searchParams.q} />
                     </div>
                 </div>
-                {/*<Tab />*/}
+                <Tab />
             </div>
-            검색 페이지
+            <div className={style.list}>
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+            </div>
         </main>
     );
 }
