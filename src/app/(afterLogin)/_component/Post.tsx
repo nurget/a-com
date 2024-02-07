@@ -11,7 +11,10 @@ import {faker} from "@faker-js/faker";
 dayjs.extend(relativeTime);
 dayjs.locale('ko');
 
-export default function Post() {
+type Props = {
+    noImage?: boolean
+}
+export default function Post({ noImage }: Props) {
     const target = {
         postId: 1,
         User: {
@@ -25,7 +28,7 @@ export default function Post() {
     }
 
     // 50% 확률로 이미지가 있거나 없거나
-    if (Math.random() > 0.5) {
+    if (Math.random() > 0.5 && !noImage) {
         target.Images.push(
             // urlLoremFlickr() -> 매번 랜덤한 이미지를 뿌려줌
             {imageId: 1, link: faker.image.urlLoremFlickr()}
