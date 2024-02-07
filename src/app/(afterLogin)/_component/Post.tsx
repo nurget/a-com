@@ -5,12 +5,15 @@ import dayjs from "dayjs";
 import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/ko';
 import ActionButtons from "@/app/(afterLogin)/_component/ActionButtons";
+import PostArticle from "@/app/(afterLogin)/_component/PostArticle";
+import {faker} from "@faker-js/faker";
 
 dayjs.extend(relativeTime);
 dayjs.locale('ko');
 
 export default function Post() {
     const target = {
+        postId: 1,
         User: {
             id: 'nurget',
             nickname: '휴지짱',
@@ -18,10 +21,21 @@ export default function Post() {
         },
         content: '트위터 게시글이야!!!',
         createdAt: new Date(),
-        Images: [],
+        Images: [] as any[],
     }
+
+    // 50% 확률로 이미지가 있거나 없거나
+    if (Math.random() > 0.5) {
+        target.Images.push(
+            // urlLoremFlickr() -> 매번 랜덤한 이미지를 뿌려줌
+            {imageId: 1, link: faker.image.urlLoremFlickr()}
+        )
+    }
+
     return (
-        <article className={style.post}>
+        // 부모는 클라이언트 컴포넌트
+        <PostArticle post={target}>
+            {/* 자식은 서버 컴포넌트 */}
             <div className={style.postWrapper}>
                 <div className={style.postUserSection}>
                     <Link href={`/${target.User.id}`} className={style.postUserImage}>
@@ -44,15 +58,18 @@ export default function Post() {
                     </div>
                     <div>{target.content}</div>
                     <div className={style.postImageSection}>
-                        {/*{target.Images.length > 0 && (*/}
-                        {/*    <div className={style.postImageSection}>*/}
-                        {/*        <img src={target.Image[0]?.link} alt=""/>*/}
-                        {/*    </div>*/}
-                        {/*)}*/}
+                        {target.Images && target.Images.length > 0 && (
+                            <Link href=
+                                      {`/${target.User.id}/status/${target.postId}/photo/${target.Images[0].imageId}`}
+                                  className={style.postImageSection}
+                            >
+                                <img src={target.Images[0]?.link} alt="" />
+                            </Link>
+                        )}
                     </div>
-                    <ActionButtons />
+                    <ActionButtons/>
                 </div>
             </div>
-        </article>
+        </PostArticle>
     )
 }
