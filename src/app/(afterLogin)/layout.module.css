@@ -12,17 +12,27 @@
 }
 
 .leftSection {
-    width: 275px;
+    width: 72px;
     height: 100dvh;
 }
-
 .leftSectionFixed {
     position: fixed;
     width: inherit;
     /* 부모를 그대로 따라가고 싶은데 내가 fixed라 100%가 안되는 경우 inherit 사용하면 유용함! */
     height: 100dvh;
+    padding: 0 8px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+@media all and (min-width: 1300px){
+    .leftSection {
+        width: 275px;
+    }
+    .leftSectionFixed {
+        align-items: flex-start;
+    }
 }
 
 .leftSectionFixed nav {
@@ -79,18 +89,8 @@
 }
 @media all and (min-width: 1300px){
     .postButton {
-        margin: 16px 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         height: 52px;
-        box-shadow: rgba(0,0,0,0.08) 0px 8px 28px;
-        background-color: rgb(29, 155, 250);
         width: 234px;
-        border: none;
-        color: rgb(255, 255, 255);
-        font-weight: 700;
-        font-size: 17px;
         border-radius: 26px;
     }
     .postButton span {
@@ -109,21 +109,29 @@
     flex-grow: 1;
 }
 
+.rightSection {
+    display: none;
+}
 .rightSectionInner {
     height: 100%;
-    width: 990px;
+    width: 600px;
     display: flex;
     justify-content: space-between;
+}
+@media all and (min-width: 1024px) {
+    .rightSection {
+        display: inline-block;
+        width: 350px;
+        height: 100%;
+    }
+    .rightSectionInner {
+        width: 990px;
+    }
 }
 
 .main {
     width: 600px;
     height: 120dvh;
-}
-
-.rightSection {
-    width: 350px;
-    height: 100%;
 }
 
 .search {
