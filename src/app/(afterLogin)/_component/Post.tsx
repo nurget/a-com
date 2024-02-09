@@ -34,6 +34,8 @@ export default function Post({ noImage }: Props) {
             // urlLoremFlickr() -> 매번 랜덤한 이미지를 뿌려줌
             {imageId: 1, link: faker.image.urlLoremFlickr()},
             {imageId: 2, link: faker.image.urlLoremFlickr()},
+            {imageId: 3, link: faker.image.urlLoremFlickr()},
+            {imageId: 4, link: faker.image.urlLoremFlickr()},
         )
     }
 
