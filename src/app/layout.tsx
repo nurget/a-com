@@ -4,6 +4,7 @@ import "./globals.css";
 import {inspect} from "util";
 import styles from './(beforeLogin)/_component/main.module.css';
 import React from "react";
+import {MSWComponent} from "@/app/_component/MSWComponent";
 
 const inter = Inter({subsets: ["latin"]});
 
@@ -21,9 +22,10 @@ export default function RootLayout({
                                    }: Props) {
     return (
         <html lang="en">
-            <body className={inter.className}>
-                {children}
-            </body>
+        <body className={inter.className}>
+        <MSWComponent/>
+        {children}
+        </body>
         </html>
     );
 }
