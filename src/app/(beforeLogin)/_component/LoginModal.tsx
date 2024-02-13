@@ -1,27 +1,42 @@
 "use client"; // 서버 컴포넌트를 클라이언트 컴포넌트로 바꾸는 법, Next가 처리
 
-import { useState } from "react";
+import {ChangeEventHandler, FormEventHandler, useState} from "react";
 import styles from '@/app/(beforeLogin)/_component/login.module.css';
+import {router} from "next/client";
+import {signIn} from "next-auth/react";
+import {redirect} from "next/navigation";
 
 export default function LoginModal() {
-    const [id, setId] = useState();
-    const [password, setPassword] = useState();
-    const [message, setMessage] = useState();
+    const [id, setId] = useState('');
+    const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
 
-    const onSubmit = () => {
-
+    const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+        e.preventDefault();
+        setMessage('');
+        try {
+            await signIn("credentials", {
+                username: id,
+                password,
+                redirect: false,
+            });
+            router.replace('/home');
+        } catch (err) {
+            console.error(err);
+            setMessage('아이디와 비밀번호가 일치하지 않습니다.');
+        }
     }
 
     const onClickClose = () => {
-
+        router.back();
     }
 
-    const onChangeId = () => {
-
+    const onChangeId: ChangeEventHandler<HTMLInputElement> = (e) => {
+        setId(e.target.value);
     }
 
-    const onChangePassword = () => {
-
+    const onChangePassword: ChangeEventHandler<HTMLInputElement> = (e) => {
+        setPassword(e.target.value);
     }
 
     return (
@@ -32,7 +47,8 @@ export default function LoginModal() {
                         <svg width={24} viewBox="0 0 24 24" aria-hidden="true"
                              className="r-18jsvk2 r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcui r-lrvibr r-19wmn03">
                             <g>
-                                <path d="M10.59 12L4.54 5.96l1.42-1.42L12 10.59l6.04-6.05 1.42 1.42L13.41 12l6.05 6.04-1.42 1.42L12 13.41l-6.04 6.05-1.42-1.42L10.59 12z"></path>
+                                <path
+                                    d="M10.59 12L4.54 5.96l1.42-1.42L12 10.59l6.04-6.05 1.42 1.42L13.41 12l6.05 6.04-1.42 1.42L12 13.41l-6.04 6.05-1.42-1.42L10.59 12z"></path>
                             </g>
                         </svg>
                     </button>
@@ -42,11 +58,13 @@ export default function LoginModal() {
                     <div className={styles.modalBody}>
                         <div className={styles.inputDiv}>
                             <label className={styles.inputLabel} htmlFor="id">아이디</label>
-                            <input id="id" className={styles.input} value={id} onChange={onChangeId} type="text" placeholder="" />
+                            <input id="id" className={styles.input} value={id} onChange={onChangeId} type="text"
+                                   placeholder=""/>
                         </div>
                         <div className={styles.inputDiv}>
                             <label className={styles.inputLabel} htmlFor="password">비밀번호</label>
-                            <input id="password" className={styles.input} value={password} onChange={onChangePassword} type="password" placeholder="" />
+                            <input id="password" className={styles.input} value={password} onChange={onChangePassword}
+                                   type="password" placeholder=""/>
                         </div>
                     </div>
                     <div className={styles.message}>{message}</div>
