@@ -9,10 +9,12 @@ function generateDate() {
         to: Date.now(),
     });
 }
+
+// 한글을 넣으면 쿠키가 저장이 안됨 .. 해결 필요!
 const User = [
-    {id: 'nurget', nickname: '휴지짱', image: '/profile.png'},
-    {id: 'tigerhy', nickname: '호랑녀', image: '/tiger.jpeg'},
-    {id: 'EXY_S2', nickname: '엑시', image: faker.image.avatar()},
+    {id: 'nurget', nickname: 'tissue', image: '/profile.png'},
+    {id: 'tigerhy', nickname: 'tiger', image: '/tiger.jpeg'},
+    {id: 'EXY_S2', nickname: 'exy', image: faker.image.avatar()},
 ]
 const Posts = [];
 

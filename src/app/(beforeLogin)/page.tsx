@@ -4,7 +4,14 @@
 // css module -> 간단!
 // vanilla extract -> Windows와 문제가 있음
 import Main from "@/app/(beforeLogin)/_component/Main";
-export default function Home() {
+import {auth} from "@/auth";
+import {redirect} from "next/navigation";
+export default async function Home() {
+    const session = await auth();
+    if (session?.user) {
+        redirect('/home');
+        return null;
+    }
     return (
         <Main />
     );
