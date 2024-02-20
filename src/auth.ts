@@ -30,9 +30,10 @@ export const {
                 }
 
                 const user = await authResponse.json()
+                console.log('user', user);
 
                 return {
-                    id: user.id,
+                    email: user.id,
                     name: user.nickname,
                     image: user.image,
                     ...user,

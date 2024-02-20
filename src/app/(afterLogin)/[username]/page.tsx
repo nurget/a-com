@@ -3,9 +3,10 @@ import styles from "./page.module.css";
 import style from './profile.module.css';
 import Post from "@/app/(afterLogin)/_component/Post";
 import BackButton from "@/app/(afterLogin)/_component/BackButton";
+import {auth} from "@/auth";
+import Link from "next/link";
 
-export default function Profile() {
-
+export default async function Profile() {
     const user = {
         id: 'nurget',
         nickname: '휴지짱',
@@ -14,7 +15,7 @@ export default function Profile() {
     return (
         <main className={style.main}>
             <div className={style.header}>
-                <BackButton />
+                <BackButton/>
                 <h3>{user.nickname}</h3>
             </div>
             <div className={style.userZone}>
@@ -25,7 +26,6 @@ export default function Profile() {
                     <div>{user.nickname}</div>
                     <div>@{user.id}</div>
                 </div>
-
                 <button className={style.followButton}>팔로우</button>
             </div>
             <div>
