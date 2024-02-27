@@ -8,25 +8,17 @@ import ActionButtons from "@/app/(afterLogin)/_component/ActionButtons";
 import PostArticle from "@/app/(afterLogin)/_component/PostArticle";
 import {faker} from "@faker-js/faker";
 import PostImages from "@/app/(afterLogin)/_component/PostImages";
+import {Post} from "@/model/Post";
 
 dayjs.extend(relativeTime);
 dayjs.locale('ko');
 
 type Props = {
     noImage?: boolean
+    post: Post
 }
-export default function Post({ noImage }: Props) {
-    const target = {
-        postId: 1,
-        User: {
-            id: 'nurget',
-            nickname: '휴지짱',
-            image: '/profile.png'
-        },
-        content: '트위터 게시글이야!!!',
-        createdAt: new Date(),
-        Images: [] as any[],
-    }
+export default function Post({ noImage, post }: Props) {
+    const target = post;
 
     // 50% 확률로 이미지가 있거나 없거나
     if (Math.random() > 0.5 && !noImage) {
