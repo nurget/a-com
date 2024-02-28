@@ -142,7 +142,9 @@ export const handlers = [
             ]
         )
     }),
+    // : (콜론)이 붙으면 params가 바뀔 수 있는 자리
     http.get('/api/search/:tag', ({ request, params }) => {
+        // 구조 분해 할당
         const { tag } = params;
         return HttpResponse.json(
             [
