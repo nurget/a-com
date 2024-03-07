@@ -13,6 +13,7 @@ export default function PostRecommends() {
         gcTime: 300 * 1000
     });
 
+    console.log("data", data);
     return data?.map((post) => (
         <Post key={post.postId} post={post} />
     ))
